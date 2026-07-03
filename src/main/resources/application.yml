@@ -1,0 +1,102 @@
+# ──────────────────────────────────────────────
+# Common config (shared by all profiles)
+# ──────────────────────────────────────────────
+spring:
+  profiles:
+    active: dev                        # change to 'prod' for production
+
+  data:
+    redis:
+      host: form-stew-splendiferous-38436.db.redis.io
+      port: 18401
+      password: 4ZynTWygVM8tfepgWBxi3mnWcc07ePOg
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: chotabeam70@gmail.com
+    password: cxbq flth wkrl jhug
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  kafka:
+    bootstrap-servers: pkc-921jm.us-east-2.aws.confluent.cloud:9092
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+    consumer:
+      group-id: weekly-sentiment-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.amakeit.journalApp.model
+
+    properties:
+      security:
+        protocol: SASL_SSL
+      sasl:
+        mechanism: PLAIN
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='JW7VIXQWDNZEGLBK' password='cfltgfsLxzo4LS6g4ubc8f3qjI0aiYRkDrV/pedj/bAP3nE3bxhNTl2R+h4388Vw';
+
+
+logging:
+  level:
+    com.amakeit.journalApp: DEBUG
+
+weather:
+  api:
+    key: a7e90fc0dcd845ad8ef133215261006
+---
+# ──────────────────────────────────────────────
+# DEV profile
+# ──────────────────────────────────────────────
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  application:
+    name: journal App
+
+  data:
+    mongodb:
+      uri: mongodb+srv://vivek123456:sujain26@cluster0.tu87wjs.mongodb.net/?appName=Cluster0
+      database: journaldb
+      auto-index-creation: true
+
+server:
+  port: 8080
+
+
+---
+# ──────────────────────────────────────────────
+# PROD profile
+# ──────────────────────────────────────────────
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  application:
+    name: journal App
+
+  data:
+    mongodb:
+      uri: mongodb+srv://vivek123456:sujain26@cluster0.tu87wjs.mongodb.net/?appName=Cluster0
+      database: journaldb
+      auto-index-creation: true
+
+server:
+  port: 8082
+  servlet:
+    context-path: /journal
