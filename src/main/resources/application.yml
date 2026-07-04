@@ -3,19 +3,19 @@
 # ──────────────────────────────────────────────
 spring:
   profiles:
-    active: prod                        # change to 'prod' for production
+    active: prod                         # change to 'prod' for production
 
   data:
     redis:
       host: form-stew-splendiferous-38436.db.redis.io
       port: 18401
-      password: 4ZynTWygVM8tfepgWBxi3mnWcc07ePOg
+      password: ****
 
   mail:
     host: smtp.gmail.com
     port: 587
     username: chotabeam70@gmail.com
-    password: cxbq flth wkrl jhug
+    password: **** **** ****
     properties:
       mail:
         smtp:
@@ -46,7 +46,7 @@ spring:
       sasl:
         mechanism: PLAIN
         jaas:
-          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='JW7VIXQWDNZEGLBK' password='cfltgfsLxzo4LS6g4ubc8f3qjI0aiYRkDrV/pedj/bAP3nE3bxhNTl2R+h4388Vw';
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='****' password=****;
 
 
 logging:
@@ -70,7 +70,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb+srv://vivek123456:sujain26@cluster0.tu87wjs.mongodb.net/?appName=Cluster0
+      uri: mongodb+srv://****:****.tu87wjs.mongodb.net/?appName=Cluster0
       database: journaldb
       auto-index-creation: true
 
@@ -92,10 +92,11 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb+srv://vivek123456:sujain26@cluster0.tu87wjs.mongodb.net/?appName=Cluster0
+      uri: mongodb+srv://****:****.tu87wjs.mongodb.net/?appName=Cluster0
       database: journaldb
       auto-index-creation: true
 
 server:
   port: 8080
-
+  servlet:
+    context-path: /journal
