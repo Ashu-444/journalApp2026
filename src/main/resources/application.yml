@@ -3,7 +3,7 @@
 # ──────────────────────────────────────────────
 spring:
   profiles:
-    active: dev                        # change to 'prod' for production
+    active: prod                        # change to 'prod' for production
 
   data:
     redis:
@@ -97,6 +97,5 @@ spring:
       auto-index-creation: true
 
 server:
-  port: 8082
-  servlet:
-    context-path: /journal
+  port: 8080
+
