@@ -175,6 +175,14 @@ The application is designed for cloud deployment and can be deployed on platform
 
 ---
 
+## 🌐 Live Demo
+
+**Application URL:**
+https://journalapp2026.onrender.com
+
+**Health Check:**
+https://journalapp2026.onrender.com/public/health-check
+
 ## 👨‍💻 Author
 
 **Ashutosh Srivastava**
