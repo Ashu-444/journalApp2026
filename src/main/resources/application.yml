@@ -3,19 +3,19 @@
 # ──────────────────────────────────────────────
 spring:
   profiles:
-    active: prod                         # change to 'prod' for production
+    active: prod
 
   data:
     redis:
-      host: form-stew-splendiferous-38436.db.redis.io
-      port: 18401
-      password: ****
+      host: ${SPRING_DATA_REDIS_HOST}
+      port: ${SPRING_DATA_REDIS_PORT}
+      password: ${SPRING_DATA_REDIS_PASSWORD}
 
   mail:
     host: smtp.gmail.com
     port: 587
-    username: chotabeam70@gmail.com
-    password: **** **** ****
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -24,7 +24,7 @@ spring:
             enable: true
 
   kafka:
-    bootstrap-servers: pkc-921jm.us-east-2.aws.confluent.cloud:9092
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS}
 
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -46,8 +46,7 @@ spring:
       sasl:
         mechanism: PLAIN
         jaas:
-          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='****' password=****;
-
+          config: ${SPRING_KAFKA_PROPERTIES_SASL_JAAS_CONFIG}
 
 logging:
   level:
@@ -55,7 +54,8 @@ logging:
 
 weather:
   api:
-    key: a7e90fc0dcd845ad8ef133215261006
+    key: ${WEATHER_API_KEY}
+
 ---
 # ──────────────────────────────────────────────
 # DEV profile
@@ -70,13 +70,12 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb+srv://****:****.tu87wjs.mongodb.net/?appName=Cluster0
+      uri: ${SPRING_DATA_MONGODB_URI}
       database: journaldb
       auto-index-creation: true
 
 server:
   port: 8080
-
 
 ---
 # ──────────────────────────────────────────────
@@ -92,11 +91,9 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb+srv://****:****.tu87wjs.mongodb.net/?appName=Cluster0
+      uri: ${SPRING_DATA_MONGODB_URI}
       database: journaldb
       auto-index-creation: true
 
 server:
   port: 8080
-  servlet:
-    context-path: /journal
